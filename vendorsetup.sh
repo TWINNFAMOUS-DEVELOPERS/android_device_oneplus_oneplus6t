@@ -1,6 +1,6 @@
 #
-# Copyright (C) 2008 The Android Open Source Project
-#
+# Copyright (C) 2019 The Android Open Source Project
+#twinnfamous 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -20,6 +20,6 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo omni_oneplus6-user
-add_lunch_combo omni_oneplus6-userdebug
-add_lunch_combo omni_oneplus6-eng
+add_lunch_combo omni_oneplus6T-user
+add_lunch_combo omni_oneplus6T-userdebug
+add_lunch_combo omni_oneplus6T-eng
