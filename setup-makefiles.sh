@@ -19,7 +19,7 @@
 set -e
 
 # Required!
-DEVICE=oneplus6
+DEVICE=oneplus6T
 VENDOR=oneplus
 
 INITIAL_COPYRIGHT_YEAR=2018
