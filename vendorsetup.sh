@@ -20,6 +20,6 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo omni_oneplus6T-user
-add_lunch_combo omni_oneplus6T-userdebug
-add_lunch_combo omni_oneplus6T-eng
+add_lunch_combo lineage_oneplus6T-user
+add_lunch_combo lineage_oneplus6T-userdebug
+add_lunch_combo lineage_oneplus6T-eng
