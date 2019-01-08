@@ -18,26 +18,26 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-BOARD_PATH := device/oneplus/oneplus6
+BOARD_PATH := device/oneplus/oneplus6T
 
-PRODUCT_FULL_TREBLE := true
+#PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
-BOARD_VNDK_RUNTIME_DISABLE := false
-PRODUCT_SHIPPING_API_LEVEL := 27
+#BOARD_VNDK_RUNTIME_DISABLE := false
+PRODUCT_SHIPPING_API_LEVEL := 28
 TARGET_NO_KERNEL := false
 BOARD_AVB_ENABLE := false
-BOARD_BUILD_DISABLED_VBMETAIMAGE := true
+#BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 BOARD_USES_VENDORIMAGE := true
-SELINUX_IGNORE_NEVERALLOWS := false
+#SELINUX_IGNORE_NEVERALLOWS := false
 
 # Split selinux policy
-PRODUCT_FULL_TREBLE_OVERRIDE := true
+#PRODUCT_FULL_TREBLE_OVERRIDE := true
 
 # Android generic system image always create metadata partition
-BOARD_USES_METADATA_PARTITION := true
+#BOARD_USES_METADATA_PARTITION := true
 
 # Enable A/B update
-TARGET_NO_RECOVERY := true
+TARGET_NO_RECOVERY := false
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_USES_RECOVERY_AS_BOOT := true
 
@@ -46,7 +46,7 @@ TARGET_OTA_ASSERT_DEVICE := OnePlus6T
 TARGET_KERNEL_VERSION := 4.9
 TARGET_KERNEL_CLANG_COMPILE := false
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
-#TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+TARGET_USES_UEFI := true
 
 # Platform
 TARGET_BOARD_PLATFORM := sdm845
@@ -54,16 +54,16 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
+TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := kryo300
+TARGET_CPU_VARIANT := cortex-a75
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := kryo
+TARGET_2ND_CPU_VARIANT := cortex-a75
 
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
@@ -73,7 +73,8 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
+BOARD_KERNEL_CMDLINE += skip_override androidboot.fastboot=1
+#BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
 #BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -87,7 +88,7 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 #TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_SOURCE := kernel/oneplus/sdm845
-TARGET_KERNEL_CONFIG := omni_oneplus6_defconfig
+TARGET_KERNEL_CONFIG := sdm845-perf_defconfig
 BOARD_KERNEL_SEPARATED_DTBO := true
 
 # partitions
@@ -106,12 +107,14 @@ TARGET_SPECIFIC_HEADER_PATH := $(BOARD_PATH)/include
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := false
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := false
+TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 TARGET_USES_MKE2FS := true
 
 # Generic AOSP image always requires separate vendor.img
 TARGET_COPY_OUT_VENDOR := vendor
+
+TARGET_FS_CONFIG_GEN := device/oneplus/oneplus6T/config.fs
 
 #Enable DRM plugins 64 bit compilation
 TARGET_ENABLE_MEDIADRM_64 := true
@@ -124,20 +127,18 @@ TARGET_USES_HWC2 := true
 VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
-BOARD_FLASH_BLOCK_SIZE := 512
-
 #Audio
-USE_CUSTOM_AUDIO_POLICY := 1
-AUDIO_FEATURE_ENABLED_VOICE_CONCURRENCY := true
-AUDIO_FEATURE_ENABLED_RECORD_PLAY_CONCURRENCY := true
-AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
-AUDIO_FEATURE_ENABLED_PCM_OFFLOAD_24 := true
-AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
-AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
-AUDIO_FEATURE_ENABLED_HDMI_SPK := true
-AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
-USE_XML_AUDIO_POLICY_CONF := 1
-AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
+#USE_CUSTOM_AUDIO_POLICY := 1
+#AUDIO_FEATURE_ENABLED_VOICE_CONCURRENCY := true
+#AUDIO_FEATURE_ENABLED_RECORD_PLAY_CONCURRENCY := true
+#AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
+#AUDIO_FEATURE_ENABLED_PCM_OFFLOAD_24 := true
+#AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
+#AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
+#AUDIO_FEATURE_ENABLED_HDMI_SPK := true
+#AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
+#USE_XML_AUDIO_POLICY_CONF := 1
+#AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
 
 #effects
 TARGET_SYSTEM_AUDIO_EFFECTS := true
@@ -207,9 +208,6 @@ USE_DEVICE_SPECIFIC_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
-# Crypto
-#TARGET_HW_DISK_ENCRYPTION := true
-#TARGET_CRYPTFS_HW_PATH := $(BOARD_PATH)/cryptfs_hw
 
 #vold
 TARGET_KERNEL_HAVE_NTFS := true
@@ -223,11 +221,9 @@ TARGET_SYSTEM_PROP := $(BOARD_PATH)/system.prop
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # selinux
+include device/oneplus/oneplus6T/sepolicy/oneplus6T-sepolicy.mk
 include device/qcom/sepolicy/sepolicy.mk
 include vendor/omni/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(BOARD_PATH)/sepolicy/qcom
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/public
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/private
 
 BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp_policy
 
@@ -245,10 +241,28 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXCLUDE_SUPERSU := true
 TW_EXTRA_LANGUAGES := true
-TW_INCLUDE_CRYPTO := true
-#TW_INCLUDE_NTFS_3G := true
+AB_OTA_UPDATER := true
+TW_INCLUDE_NTFS_3G := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_MAX_BRIGHTNESS := 255
-TW_NO_USB_STORAGE := false
-TW_SCREEN_BLANK_ON_BOOT := true
+TW_MAX_BRIGHTNESS := 940
 TW_THEME := portrait_hdpi
+TARGET_RECOVERY_DEVICE_MODULES += android.hardware.boot@1.0
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
+TW_NO_SCREEN_BLANK := true
+TW_USE_TOOLBOX := true
+TW_NO_LEGACY_PROPS := true
+TW_USE_LEDS_HAPTICS := true
+# TWRP-INSTALLER https://gerrit.omnirom.org/#/c/android_build/+/33182/
+#USE_RECOVERY_INSTALLER := true
+#RECOVERY_INSTALLER_PATH := device/oneplus/oneplus6T/installer
+
+
+# Encryption
+# Custom Platform Version and Security Patch
+# Must match build.prop of current system for decryption to work properly!
+PLATFORM_VERSION := 9
+# 9.0.5 STOCK
+PLATFORM_SECURITY_PATCH := 2025-12-31
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+

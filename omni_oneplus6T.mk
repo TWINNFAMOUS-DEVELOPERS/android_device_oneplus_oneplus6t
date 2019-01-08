@@ -30,19 +30,26 @@ $(call inherit-product, vendor/omni/config/gsm.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # must be before including omni part
-TARGET_BOOTANIMATION_SIZE := 1080p
+# Device uses high-density artwork where available
+#PRODUCT_AAPT_CONFIG := normal
+#PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2340
+TARGET_SCREEN_WIDTH := 1080
+
 AB_OTA_UPDATER := true
 
-DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6/overlay
+DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6T/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/oneplus/oneplus6/device.mk)
+$(call inherit-product, device/oneplus/oneplus6T/device.mk)
 
-#ALLOW_MISSING_DEPENDENCIES := true
+ALLOW_MISSING_DEPENDENCIES := true
 
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
@@ -57,8 +64,8 @@ PRODUCT_MODEL := ONEPLUS A6013
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=OnePlus6T PRODUCT_NAME=OnePlus6T
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=OnePlus/OnePlus6T/OnePlus6T:9/PKQ1.180716.001/1812260627:user/release-keys \
-    PRIVATE_BUILD_DESC="OnePlus6T-user 9 PKQ1.180716.001 1812260627 release-keys"
+    BUILD_FINGERPRINT=OnePlus/OnePlus6T/OnePlus6T:9/PKQ1.180716.001/1812281442:user/release-keys \
+    PRIVATE_BUILD_DESC="OnePlus6T-user 9 PKQ1.180716.001 1812281442 release-keys"
 
 PLATFORM_SECURITY_PATCH_OVERRIDE := 2018-11-01
 
